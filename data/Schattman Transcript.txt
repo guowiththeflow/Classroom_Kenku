@@ -1,0 +1,87 @@
+Welcome to grade 12 Computer Science with Mr. Schattman period C I'm looking forward to seeing the upper halves of your smiling faces on Thursday at 11:40 am in room 1706 Bring a Chromebook and a positive attitude Or bring an attitude and a positive Chromebook Whichever suits you that morning
+If we have a snow day we will meet by Google Meet
+To confirm that you saw this message, leave a joke in the comments below I'll start
+Our lessons and HW for today Those of you learning from home take yourself through the slideshow then try the HW Email me questions
+Tell us what you were curious about since last Friday
+Our lesson for Monday
+Video version of our lesson on introduction to Processing in case you need a review or missed it live
+Your HW tonight Go to the Processing reference page and learn 3 more features of Processing besides what we showed in the lesson
+To run Processing from a Chromebook
+Login to the Windows Virtual Desktop using your normal school login
+Within the WVD click the Windows logo in the lower left corner of the screen and select Processing from the list
+Below is a link to a .zip file that contains all the example Processing programs that I will show in the course
+Please copy the .zip file to your Windows Virtual Desktop and extract it to a folder
+Here's how
+Copy this link to your clipboard
+Login to the WVD by clicking here
+Within the WVD open Google Chrome
+In Chrome paste the link into the browser and push Enter
+Click the Download arrow upper right part of the screen
+The WVD will prompt you for where on the WVD you want to save the .zip file Pick Desktop
+The file ICS4UI.zip should now appear your WVD
+Right-click the .zip file and select Extract all
+The folder ICS4UI should now be on your desktop Double click it to get to any Processing program that I direct you to in the future
+Teach yourself how to do for-loops in Processing Java C
+Instructions for Friday
+Today please spend
+10 minutes reading this short amazing lesson on 2D arrays
+65 minutes on your First Coding Assignment
+20 minutes going outside and building a snowhuman
+Our lesson for Tuesday
+Your HW Make a simple text file and write a Processing program that reads in that text file and does something useful with it
+HW for Wednesday Read this lesson on how to write Processing functions that return arrays and take arrays as parameters
+Lesson for Thursday
+Read the lesson try the exercises and watch the video on Foxes and Rabbits
+Run the Processing program described in the lesson and try various scenarios
+Read the program from top to bottom and answer the questions on it given at the end of the lesson
+Lesson for Friday
+Next week we will be starting our modeling assignment
+You'll be choosing a phenomenon from nature to model and writing a Processing program that animates a simulation of that phenomenon
+The type of model we'll be using is called a cellular automaton A cellular automaton is a model that uses a 2D grid of coloured squares to illustrate some process e.g. a forest fire like the demo we saw on the first day of class the spread of pollution in the ocean the flow of customers in a store the movement of red blood cells in an artery chemical reactions etc.
+To get inspired for picking your own project please run all of the student Processing programs in the folder
+Should take about 30 to 40 minutes Watch all of them but pick 1 or 2 of them to read in detail to get a sense of how they work Your HW for the weekend is to brainstorm about which natural phenomenon you would like to model Come to school on Monday with 3 good ideas
+Planning to code
+Project description for the Cellular Automaton Assignment We'll set a due date soon For now just familiarize yourself with the requirements
+Intro to our next marked assignment
+No need to start coding now
+Just start dreaming about what you'd like to do for yours
+We'll start in earnest on Monday
+Read this mini essay on the philosophy of complex numbers
+Play with this program for a while
+Read the final lesson for the last few technical details then start coding
+Introductory lesson on object oriented programming
+Try coding this in Processing and ask me any questions you have
+Play with this program to download it copy this link open WVD within WVD open Chrome paste the link into Chrome Download the .zip file to your WVD
+Play with this traffic simulator developed by a team of three students in 2019 as their SE Team Design Project for 10 minutes Next read the design document that the team wrote before they began writing the code Finally read the user manual they wrote for their future customers Finally finally be inspired this is the kind of project you and two random teammates will create in the coming weeks
+Schedule and marking for the SE Team Design Project
+Nominations for our valedictorian
+Instructions for Wednesday
+Work on your team project for 30 minutes sometime today Rehearse what you will say during your team's prototype demo Be thankful you are not a teacher because we all had to come to school today at 8:30
+Someone left their phone in 1706 on Monday or Tuesday It is crying out for its mother Please claim if yours
+Instructions for Monday
+Today is Day 8 of your 10 day team project Spend today testing and debugging Rough outline of your day Finish your last feature Code freeze here No more new features from here on out Each person runs your program intentionally trying to make it crash generate errors or give a wrong output Without trying to fix the bugs write them down and assign a person on the team to fix each bug
+Invite one or two people from other teams to try out your program tell them to try to break the program and generate errors ask them to tell you what they found take their advice like a good sport and don't be offended
+Vote for this year's valedictorian from our short list of 6 candidates
+Bubble sort
+Read the lesson especially the last section on pseudocode
+Code bubble sort in processing for HW tonight
+Discovering better sorting algorithms
+Review the lesson
+Try coding insertion sort in Processing
+Our outline for this unit Note the days of the unit test next Wednesday
+Sorting Olympics Scoresheet
+Measuring run-time
+Read the lesson as a review No need to turn in anything
+Take the practice quiz to find out are you a big-o boss
+Our lesson from today
+Our lesson for Thursday
+Our lesson for Friday Nothing to turn in Just read learn and take personal satisfaction in the growth in your understanding
+Lesson from Monday
+Our lesson from Tuesday Includes the video with the elevator music and the main proof
+Review exercises for the unit test on Thursday
+Thinking of going to prom No need to buy a 10 thousand dollar dress or even a 10 dollar dress Get in on the Prom Swap Shop happening all next week On the flip side got items that you'd love to give a fresh life and walk the Red Carpet this season Bring them in as part of the grant exchange
+Play this game for a while
+Our lessons from Thursday Nothing to turn in just read and enjoy
+Final project description
+Marking for the final project has been revised from the original Note how the milestones on the timeline will be marked
+By popular request i.e. 2 people here are the bachata and salsa playlists I played for the cool 6 people who were present in class the day after prom
