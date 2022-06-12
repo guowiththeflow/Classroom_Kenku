@@ -1,4 +1,5 @@
 import java.util.Map;
+import g4p_controls.*;
 
 void setup() {
   // Reads text from file and converts it into one all-lowercase string
@@ -14,7 +15,7 @@ void setup() {
   HashMap<String, String[]> vocabMap = new HashMap<String, String[]>(); // The String is the key; the String[] array keeps track of every string following this one
   
   // === VOCAB BUILDER ===
-  for (int i=0; i < transcriptByWords.length-1; i++) {
+  for (int i=0; i < transcriptByWords.length; i++) {
     alreadyInVocab = false;
     
     // For every word in the transcript but the final one, checks if current word has already been encountered
@@ -23,14 +24,14 @@ void setup() {
         alreadyInVocab = true;
     }
     
-    if (i == transcriptByWords.length)
-      next = 0; // In case the last word in the transcript is also a unique word, the first word in the transcript is also appended to the end of its array to ensure every word has at least one other following it
+    if (i == transcriptByWords.length-1) // Last word
+      next = 0; // In case the last word in the transcript is also a unique word, the first word in the transcript is always appended to the end of its array to ensure every word has at least one other following it
     else
       next = i+1;
     
     // If it's a new word, create a new key and array for "following words"
     if (alreadyInVocab == false) {// if the word does not already have an array mapped to it, create the key now
-        String[] followingArray = {transcriptByWords[i+1]};
+        String[] followingArray = {transcriptByWords[next]};
         vocabMap.put(transcriptByWords[i], followingArray);
         vocabulary = append(vocabulary, transcriptByWords[i]);
       }
@@ -38,21 +39,30 @@ void setup() {
     // If the word already exists in the vocabulary, add the next "following word" to the pre-existing array
     else {
       String[] followingArray = vocabMap.get(transcriptByWords[i]);
-      followingArray = append(followingArray, transcriptByWords[i+1]);
+      followingArray = append(followingArray, transcriptByWords[next]);
       vocabMap.put(transcriptByWords[i], followingArray);
     }
   }
   
-  
-  // * FOR DEBUGGING: prints vocab and following lists to screen
+  // *** FOR DEBUGGING: prints vocab and following lists to screen ***
   for (Map.Entry me : vocabMap.entrySet()) {
     print("\"" + me.getKey() + "\" is followed by: ");
     println(me.getValue());
-}
-
-    String[] promFollow = vocabMap.get("prom");
-    println("Prom is followed by ");
-    printArray(promFollow);
+  }
+  
+  //println("========================");
+  ////randomMimic(schattman);
+  
+  //String randStart = transcriptByWords[int(random(transcriptByWords.length-1))];
+  //String sentence = randStart;
+  //for (int i=0; i < random(5, 15); i++) {
+  //  String[] currOptions = vocabMap.get(randStart);
+  //  printArray(currOptions);
+  //  String randNext = currOptions[int(random(currOptions.length-1))];
+  //  sentence += " " + randNext;
+  //}
+  //println(sentence);
+  
   
   
 // === VOCAB BUILDER - DONE ===
