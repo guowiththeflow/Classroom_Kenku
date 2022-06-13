@@ -2,67 +2,12 @@ import java.util.Map;
 import g4p_controls.*;
 
 void setup() {
-  // Reads text from file and converts it into one all-lowercase string
-  String[] transcriptByLines = loadStrings("Schattman Transcript.txt");
-  String transcriptByString = join(transcriptByLines, " ").toLowerCase();
-  String[] transcriptByWords = transcriptByString.split(" ");
+  Teacher schattman = new Teacher("Schattman", "Schattman Transcript.txt", "Schattman Upper Screenshot.txt");
   
-  // Variables to keep track of whether a word has already been encountered
-  String[] vocabulary = {}; 
-  boolean alreadyInVocab;
-  int next;
-  
-  HashMap<String, String[]> vocabMap = new HashMap<String, String[]>(); // The String is the key; the String[] array keeps track of every string following this one
-  
-  // === VOCAB BUILDER ===
-  for (int i=0; i < transcriptByWords.length; i++) {
-    alreadyInVocab = false;
-    
-    // For every word in the transcript but the final one, checks if current word has already been encountered
-    for (int j=0; j < vocabulary.length; j++) { // indexOf() doesn't work because it only looks for a certain collection of characters; if i was looking for the word "if" and already had "l[if]e" registered, the program would think "if" was in there
-      if ( vocabulary[j].equals(transcriptByWords[i]) )
-        alreadyInVocab = true;
-    }
-    
-    if (i == transcriptByWords.length-1) // Last word
-      next = 0; // In case the last word in the transcript is also a unique word, the first word in the transcript is always appended to the end of its array to ensure every word has at least one other following it
-    else
-      next = i+1;
-    
-    // If it's a new word, create a new key and array for "following words"
-    if (alreadyInVocab == false) {// if the word does not already have an array mapped to it, create the key now
-        String[] followingArray = {transcriptByWords[next]};
-        vocabMap.put(transcriptByWords[i], followingArray);
-        vocabulary = append(vocabulary, transcriptByWords[i]);
-      }
-    
-    // If the word already exists in the vocabulary, add the next "following word" to the pre-existing array
-    else {
-      String[] followingArray = vocabMap.get(transcriptByWords[i]);
-      followingArray = append(followingArray, transcriptByWords[next]);
-      vocabMap.put(transcriptByWords[i], followingArray);
-    }
-  }
-  
-  // *** FOR DEBUGGING: prints vocab and following lists to screen ***
-  for (Map.Entry me : vocabMap.entrySet()) {
-    print("\"" + me.getKey() + "\" is followed by: ");
-    println(me.getValue());
-  }
-  
-  //println("========================");
-  ////randomMimic(schattman);
-  
-  //String randStart = transcriptByWords[int(random(transcriptByWords.length-1))];
-  //String sentence = randStart;
-  //for (int i=0; i < random(5, 15); i++) {
-  //  String[] currOptions = vocabMap.get(randStart);
-  //  printArray(currOptions);
-  //  String randNext = currOptions[int(random(currOptions.length-1))];
-  //  sentence += " " + randNext;
-  //}
-  //println(sentence);
-  
+  schattman.buildVocabMap();
+  schattman.printVocabMap();
+  println();
+  schattman.spewGibberish(); // Deeply, deeply out of character.
   
   
 // === VOCAB BUILDER - DONE ===
@@ -82,7 +27,7 @@ void setup() {
 // - Update the previous Word variable to match the current Word
 // Repeat until the end of the string; to avoid going out of bounds, also add the very first word to the Following-ArrayList of the very last word, just in case the last word only appears once (ie wouldn't have anything following it).
 
-// === DEMO ===
+// === DEMO - DONE ===
 // Generate a random string (no user interaction) with Mr. Schattman's classroom posts:
 // Pick a random length n from 5-15 words
 // Pick any word from Everything-ArrayList as the starting word
