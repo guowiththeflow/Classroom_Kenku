@@ -90,4 +90,8 @@ class Teacher {
     println("SCHATTMAN SEZ: " + sentence);
   }
   
+  void drawScreen() {
+    img = loadImage(this.upperScreenshot);
+  }
+  
 }

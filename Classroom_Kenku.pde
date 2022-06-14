@@ -1,15 +1,29 @@
 import java.util.Map;
 import g4p_controls.*;
+PImage img;
 
 void setup() {
-  Teacher schattman = new Teacher("Schattman", "Schattman Transcript.txt", "Schattman Upper Screenshot.txt");
+  Teacher schattman = new Teacher("Schattman", "Schattman Transcript.txt", "Schattman Upper Screenshot.jpg");
   
   schattman.buildVocabMap();
   schattman.printVocabMap();
   println();
   schattman.spewGibberish(); // Deeply, deeply out of character.
   
+  img = loadImage(schattman.upperScreenshot);
+  background(255);
+  size(800, 600);
+}
+
+void draw() {
+  int textHeight = 90;
+  int heightBuffer = img.height*2+textHeight;
+  int imgX = (width-img.width)/2;
+  int imgY = (height-heightBuffer)/2;
+  image(img, (width-img.width)/2, (height-heightBuffer)/2);
   
+  rect(imgX, imgY+img.height, img.width-3, img.height-3);
+}
 // === VOCAB BUILDER - DONE ===
 // Read specified file in as one string (all lowercase), then split string up by spaces and let every substring between spaces be a new Word object; store these Words in an originalFileArray
 // Word class contains:
@@ -69,6 +83,3 @@ void setup() {
 // Button to randomly generate w/ demo code?
 // Button to save screen as an image
 // Trash can to clear the screen and reset
-
-  exit();
-}
