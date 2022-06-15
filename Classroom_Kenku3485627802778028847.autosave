@@ -1,37 +1,32 @@
 import java.util.Map;
 import g4p_controls.*;
-PImage upper, lower;
-String[] punctuation = {",", "\"", ".", "?", "!", ":", ";", "*", "(", ")"};
-Teacher currTeacher;
+PImage upper;
+PImage lower;
 
 void setup() {
-  Teacher araujo = new Teacher("Araujo", "Araujo Transcript.txt", "Araujo Upper Screenshot.png");
-  Teacher bruzzese = new Teacher("Bruzzese", "Bruzzese Transcript.txt", "Bruzzese Upper Screenshot.png");
-  Teacher schattman = new Teacher("Schattman", "Schattman Transcript.txt", "Schattman Upper Screenshot.png");
-  Teacher scullion = new Teacher("Scullion", "Scullion Transcript.txt", "Scullion Upper Screenshot.png");
+  Teacher schattman = new Teacher("Schattman", "Schattman Transcript.txt", "Schattman Upper Screenshot.jpg");
+  Teacher currTeacher = schattman;
   
-  currTeacher = schattman;
   schattman.buildVocabMap();
-  //schattman.printVocabMap();
+  schattman.printVocabMap();
+  println();
   schattman.spewGibberish(); // Deeply, deeply out of character.
   
+  upper = loadImage(currTeacher.upperScreenshot);
+  lower = loadImage("Bottom Screenshot.png");
   background(255);
   size(800, 600);
-  lower = loadImage("Bottom Screenshot.png");
 }
 
 void draw() {
-  upper = loadImage(currTeacher.upperScreenshot);
-  //int textHeight = (fontSize*numLines);
-  int textHeight = (90);
+  int textHeight = 90;
   int heightBuffer = upper.height*2+textHeight;
-  int imgX = (width-upper.width)/2;
+  int upperX = (width-upper.width)/2;
   int upperY = (height-heightBuffer)/2;
   
-  stroke(220);
-  rect(imgX+1, upperY+upper.height-1, upper.width-4, textHeight);
+  rect(upperX, upperY+upper.height-1, upper.width, textHeight);
   image(upper, (width-upper.width)/2, (height-heightBuffer)/2);
-  image(lower, (width-lower.width)/2, ((height-heightBuffer)/2)+textHeight);
+  image(
   
 }
 // === VOCAB BUILDER - DONE ===

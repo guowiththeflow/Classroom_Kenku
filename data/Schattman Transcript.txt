@@ -84,4 +84,14 @@ Play this game for a while
 Our lessons from Thursday Nothing to turn in just read and enjoy
 Final project description
 Marking for the final project has been revised from the original Note how the milestones on the timeline will be marked
-By popular request i.e. 2 people here are the bachata and salsa playlists I played for the cool 6 people who were present in class the day after prom
+By popular request ie 2 people here are the bachata and salsa playlists I played for the cool 6 people who were present in class the day after prom
+Pick one person from your team to turn in the project on your team's behalf. Please post a comment with your submission listing your 3 team members so I know whose program is whose.
+Submit as a .zip file or as a github link.
+Up to 5 marks will be ?deducted for late submissions. The reason is that delivering things on a schedule is one of the learning objectives of the project.
+Take your team out for lunch this week to celebrate!
+Car Track program
+Optional +3 bonus marks, to be added to your final project.
+Create your own Droste photo using the instructions at the end of Lesson 2 Recursive Art.
+Read the lesson
+Finish your Mandelbrot set program and generate some beautiful output
+Paste your results into this document and submit

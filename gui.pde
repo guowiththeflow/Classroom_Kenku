@@ -20,7 +20,7 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
 
 public void schattmanSelected(GButton source, GEvent event) { //_CODE_:schattmanButton:230753:
   println("schattmanButton - GButton >> GEvent." + event + " @ " + millis());
-  img = loadImage("Schattman Upper Screenshot.jpg");
+  upper = loadImage("Schattman Upper Screenshot.jpg");
   
 } //_CODE_:schattmanButton:230753:
 
