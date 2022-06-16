@@ -95,18 +95,16 @@ class Teacher {
   println();
   }
   
-  // GENERATE GIBBERISH
+  // GENERATE GIBBERISH -- make this an array that you join instead of a string
   void spewGibberish() {
-    String sentence = "";
     float sentenceLength = random(15,30);
-    String randNext = transcriptByWords[int(random(finalTranscript.length-1))];
+    String randNext = finalTranscript[int(random(finalTranscript.length-1))];
     for (int i=0; i < sentenceLength; i++) {
       sentence += randNext + " ";
       String[] currOptions = vocabMap.get(randNext);
-      // printArray(currOptions);
       randNext = currOptions[int(random(currOptions.length-1))];
     }
-    println(this.name.toUpperCase(), "SEZ:", sentence);
+    println(sentence);
   }
   
   
