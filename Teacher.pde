@@ -100,7 +100,7 @@ class Teacher {
     float sentenceLength = random(15,30);
     String randNext = finalTranscript[int(random(finalTranscript.length-1))];
     for (int i=0; i < sentenceLength; i++) {
-      sentence += randNext + " ";
+      sentence = append(sentence, randNext);
       String[] currOptions = vocabMap.get(randNext);
       randNext = currOptions[int(random(currOptions.length-1))];
     }

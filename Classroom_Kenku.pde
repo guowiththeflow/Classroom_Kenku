@@ -3,9 +3,16 @@ import g4p_controls.*;
 PImage upper, lower;
 String[] punctuation = {",", "\"", ".", "?", "!", ":", ";", "*", "(", ")"};
 Teacher currTeacher;
-int numLines = 0;
-int fontSize = 10;
 String[] sentence = {};
+ArrayList<String[]> sentenceByLines = new ArrayList<String[]>();
+int charCountSoFar = 0;
+int startIndex = 0;
+
+// Variables for text printing:
+PFont monospace;
+int maxCharsPerLine = 121;
+int maxLines = 10;
+int fontSize = 12;
 
 void setup() {
   Teacher araujo = new Teacher("Araujo", "Araujo Transcript.txt", "Araujo Upper Screenshot.png");
@@ -18,20 +25,32 @@ void setup() {
   //currTeacher.printVocabMap();
   currTeacher.spewGibberish(); // Deeply, deeply out of character.
   
-  background(255);
   size(800, 600);
   lower = loadImage("Bottom Screenshot.png");
-  textSize(fontSize);
+  monospace = createFont("MS Gothic", fontSize);
+  textFont(monospace);
 }
 
 void draw() {
-  numLines = 
+  
+  background(255);
+  
+  int currLine = 0;
+  for (int i = 0; i < sentence.length; i++) {
+    if (maxCharsPerLine + sentence[i].length() > 121) { // if this line doesn't have any room left...
+      if (currLine == maxLines) {
+        // do nothing
+      } else
+        String[]
+        currLine++;
+    else
+    }
   
   upper = loadImage(currTeacher.upperScreenshot);
   int lineHeight = (fontSize);
-  int textHeight = upper.height*2+lineHeight*numLines;
+  int textHeight = upper.height+lineHeight*currLine+10; // constant of 10 acts as a buffer between bottom screenshot and text
   int imgX = (width-upper.width)/2;
-  int upperY = (height-textHeight)/2;
+  int upperY = (height-textHeight-upper.height)/2;
   
   stroke(220);
   fill(255);
@@ -40,7 +59,19 @@ void draw() {
   image(lower, imgX-1, upperY+textHeight);
   
   fill(0);
-  text(sentence, imgX+20, upperY+upper.height+10);
+  
+
+      
+      
+      //sentenceByLines.add(sentence[i]);
+      //maxCharsPerLine += sentence[i].length();
+    } else {
+      
+    }
+    
+  }
+    
+  //  text(join(sentenceByLines[lineNum], " "), imgX+20, upperY+upper.height+10+lineHeight*lineNum);
   
 }
 // === VOCAB BUILDER - DONE ===
