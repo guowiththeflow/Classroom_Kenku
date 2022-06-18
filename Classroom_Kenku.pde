@@ -1,43 +1,45 @@
 import java.util.Map;
 import g4p_controls.*;
-PImage upper, lower;
-String[] punctuation = {",", "\"", ".", "?", "!", ":", ";", "*", "(", ")"};
-Teacher currTeacher;
-String[] sentence = {};
-ArrayList<String[]> sentenceByLines = new ArrayList<String[]>();
-int startIndex = 0;
-int numLines;
 
-// Variables for text printing:
+// Variables for file reading and interpretation 
+String[] punctuation = {",", "\"", ".", "?", "!", ":", ";", "*", "(", ")"};
+String[] sentence = {}; // though this may have been more intuitively suited for an arrayList, the join() function only works with arrays, so I found some workarounds!
+
+// Variables for main window display/text printing:
 PFont monospace;
+PImage upper, lower;
 int maxCharsPerLine = 110;
 int fontSize = 13;
 int spaceBetweenLines = 4;
 int currLine;
+int numLines;
+
+// Teachers:
+Teacher currTeacher;
+Teacher araujo = new Teacher("Araujo", "Araujo Transcript.txt", "Araujo Upper Screenshot.png");
+Teacher bruzzese = new Teacher("Bruzzese", "Bruzzese Transcript.txt", "Bruzzese Upper Screenshot.png");
+Teacher schattman = new Teacher("Schattman", "Schattman Transcript.txt", "Schattman Upper Screenshot.png");
+Teacher scullion = new Teacher("Scullion", "Scullion Transcript.txt", "Scullion Upper Screenshot.png");
 
 void setup() {
-  Teacher araujo = new Teacher("Araujo", "Araujo Transcript.txt", "Araujo Upper Screenshot.png");
-  Teacher bruzzese = new Teacher("Bruzzese", "Bruzzese Transcript.txt", "Bruzzese Upper Screenshot.png");
-  Teacher schattman = new Teacher("Schattman", "Schattman Transcript.txt", "Schattman Upper Screenshot.png");
-  Teacher scullion = new Teacher("Scullion", "Scullion Transcript.txt", "Scullion Upper Screenshot.png");
   
-  currTeacher = schattman;
+  currTeacher = bruzzese;
   currTeacher.buildVocabMap();
   //currTeacher.printVocabMap();
-  currTeacher.spewGibberish(); // Deeply, deeply out of character.
+  //currTeacher.spewGibberish(); // Deeply, deeply out of character.
   
   size(800, 600);
   lower = loadImage("Bottom Screenshot.png");
   monospace = createFont("MS Gothic", fontSize);
   textLeading(spaceBetweenLines);
   textFont(monospace);
-}
-
+  createGUI();
+};
 void draw() {
   
   background(255);
   
-  if(sentence.length % 121 != 0) // given that integer operations chop off the final decimal, always round up UNLESS the number of characters is an exact multiple of the max number of characters.
+  if(sentence.length % 121 != 0) // given that integer operations chop off the final decimal, round up UNLESS the number of characters is an exact multiple of the max number of characters.
     numLines = join(sentence, " ").length()/maxCharsPerLine + 1;
   else
     numLines = join(sentence, " ").length()/maxCharsPerLine;
@@ -57,6 +59,13 @@ void draw() {
   text(join(sentence, " "), imgX+20, upperY+upper.height+6, upper.width-45, textBoxHeight);
   
 }
+
+void reset() {
+  String[] emptySentence = {};
+  sentence = emptySentence;
+  println(sentence);
+}
+
 // === VOCAB BUILDER - DONE ===
 // Read specified file in as one string (all lowercase), then split string up by spaces and let every substring between spaces be a new Word object; store these Words in an originalFileArray
 // Word class contains:
