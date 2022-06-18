@@ -5,14 +5,15 @@ String[] punctuation = {",", "\"", ".", "?", "!", ":", ";", "*", "(", ")"};
 Teacher currTeacher;
 String[] sentence = {};
 ArrayList<String[]> sentenceByLines = new ArrayList<String[]>();
-int charCountSoFar = 0;
 int startIndex = 0;
+int numLines;
 
 // Variables for text printing:
 PFont monospace;
-int maxCharsPerLine = 121;
-int maxLines = 10;
-int fontSize = 12;
+int maxCharsPerLine = 110;
+int fontSize = 13;
+int spaceBetweenLines = 4;
+int currLine;
 
 void setup() {
   Teacher araujo = new Teacher("Araujo", "Araujo Transcript.txt", "Araujo Upper Screenshot.png");
@@ -20,7 +21,7 @@ void setup() {
   Teacher schattman = new Teacher("Schattman", "Schattman Transcript.txt", "Schattman Upper Screenshot.png");
   Teacher scullion = new Teacher("Scullion", "Scullion Transcript.txt", "Scullion Upper Screenshot.png");
   
-  currTeacher = bruzzese;
+  currTeacher = schattman;
   currTeacher.buildVocabMap();
   //currTeacher.printVocabMap();
   currTeacher.spewGibberish(); // Deeply, deeply out of character.
@@ -28,6 +29,7 @@ void setup() {
   size(800, 600);
   lower = loadImage("Bottom Screenshot.png");
   monospace = createFont("MS Gothic", fontSize);
+  textLeading(spaceBetweenLines);
   textFont(monospace);
 }
 
@@ -35,43 +37,24 @@ void draw() {
   
   background(255);
   
-  int currLine = 0;
-  for (int i = 0; i < sentence.length; i++) {
-    if (maxCharsPerLine + sentence[i].length() > 121) { // if this line doesn't have any room left...
-      if (currLine == maxLines) {
-        // do nothing
-      } else
-        String[]
-        currLine++;
-    else
-    }
+  if(sentence.length % 121 != 0) // given that integer operations chop off the final decimal, always round up UNLESS the number of characters is an exact multiple of the max number of characters.
+    numLines = join(sentence, " ").length()/maxCharsPerLine + 1;
+  else
+    numLines = join(sentence, " ").length()/maxCharsPerLine;
   
   upper = loadImage(currTeacher.upperScreenshot);
-  int lineHeight = (fontSize);
-  int textHeight = upper.height+lineHeight*currLine+10; // constant of 10 acts as a buffer between bottom screenshot and text
   int imgX = (width-upper.width)/2;
-  int upperY = (height-textHeight-upper.height)/2;
+  int textBoxHeight = (fontSize+spaceBetweenLines)*numLines+20; // constant of 10 acts as a buffer between bottom screenshot and text
+  int upperY = (height-textBoxHeight-upper.height-lower.height)/3; // text stays in the top portion of the screen, as the bottom portion contains the onscreen GUI with dynamic buttons
   
   stroke(220);
   fill(255);
-  rect(imgX+1, upperY+upper.height-1, upper.width-4, textHeight);
+  rect(imgX+1, upperY+upper.height-0.5, upper.width-4, textBoxHeight);
   image(upper, imgX, upperY);
-  image(lower, imgX-1, upperY+textHeight);
-  
+  image(lower, imgX-1, upperY+upper.height+textBoxHeight-0.5); // constant of 0.5 allows the top border of the rectangle's outline sneak under the top screenshot :)
+    
   fill(0);
-  
-
-      
-      
-      //sentenceByLines.add(sentence[i]);
-      //maxCharsPerLine += sentence[i].length();
-    } else {
-      
-    }
-    
-  }
-    
-  //  text(join(sentenceByLines[lineNum], " "), imgX+20, upperY+upper.height+10+lineHeight*lineNum);
+  text(join(sentence, " "), imgX+20, upperY+upper.height+6, upper.width-45, textBoxHeight);
   
 }
 // === VOCAB BUILDER - DONE ===

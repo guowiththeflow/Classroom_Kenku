@@ -97,7 +97,7 @@ class Teacher {
   
   // GENERATE GIBBERISH -- make this an array that you join instead of a string
   void spewGibberish() {
-    float sentenceLength = random(15,30);
+    float sentenceLength = random(15, 50);
     String randNext = finalTranscript[int(random(finalTranscript.length-1))];
     for (int i=0; i < sentenceLength; i++) {
       sentence = append(sentence, randNext);
