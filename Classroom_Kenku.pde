@@ -1,7 +1,28 @@
+/* NOTE: As I spoke with you about on Monday, G4P appears to have run into a bug with Processing itself (as opposed to my own code). 
+
+As such, I was unable to implement a GUI to accomplish all the features my project set out to do. Missing features are:
+1. Saving and clearing the screen. (My clear function is already coded in the form of "reset()"; the save function would have simply saved the current main screen as an image.)
+2. Varying the length of generated gibberish. (I would have done this with a slider that went from "short" to "long", and predetermined sentence lengths for each.)
+3. Using dynamic buttons to build a sentence yourself, including punctuation.
+(I would have done this by updating the face text and button variable with three random selections from the vocabMap's array based on the current word OR any random word from the 
+vocab as a whole if there were less than 3 unique options, and then appending the button text to the end of the sentence array. Punctuation buttons would operate much the same,
+except with no need to update dynamically as they would always represent the same character.)
+
+The interactive GUI features I was able to add before G4P had its mental breakdown were:
+1. Toggling between teachers.
+2. Generating gibberish based on those teachers' vocabulary.
+
+As the project stands, the teacher names and gibberish-generating buttons on the Teacher Selection GUI are still usable--just ugly and clearly incomplete.
+Meanwhile, the Word Selection screen does nothing but get in the way. When we spoke on Monday, you gave me permission to hand in the project as-is without penalty.
+If you'd like to try to run the program without a GUI altogether, you can do so by manually changing the currTeacher variable in setup() and then repeatedly running the program.
+
+Thank you for your understanding!!
+*/
+
 import java.util.Map;
 import g4p_controls.*;
 
-// Variables for file reading and interpretation 
+// Variables for file reading and interpretation
 String[] punctuation = {",", "\"", ".", "?", "!", ":", ";", "*", "(", ")"};
 String[] sentence = {}; // though this may have been more intuitively suited for an arrayList, the join() function only works with arrays, so I found some workarounds!
 
@@ -13,6 +34,7 @@ int fontSize = 13;
 int spaceBetweenLines = 4;
 int currLine;
 int numLines;
+String sentenceLength;
 
 // Teachers:
 Teacher currTeacher;
@@ -23,10 +45,17 @@ Teacher scullion = new Teacher("Scullion", "Scullion Transcript.txt", "Scullion 
 
 void setup() {
   
-  currTeacher = bruzzese;
-  currTeacher.buildVocabMap();
+  // TO RUN THE PROGRAM WITHOUT GUI, TRY CHANGING THESE VARIABLES!
+  currTeacher = schattman; // Options: araujo, bruzzese, schattman, scullion
+  sentenceLength = "medium"; // Options: "short", "medium", "long", "soliloquy"
+  
+  //araujo.buildVocabMap();
+  bruzzese.buildVocabMap();
+  schattman.buildVocabMap();
+  //scullion.buildVocabMap();
+  
   //currTeacher.printVocabMap();
-  //currTeacher.spewGibberish(); // Deeply, deeply out of character.
+  currTeacher.spewGibberish(); // Deeply, deeply out of character.
   
   size(800, 600);
   lower = loadImage("Bottom Screenshot.png");
@@ -34,7 +63,8 @@ void setup() {
   textLeading(spaceBetweenLines);
   textFont(monospace);
   createGUI();
-};
+}
+
 void draw() {
   
   background(255);
@@ -47,14 +77,16 @@ void draw() {
   upper = loadImage(currTeacher.upperScreenshot);
   int imgX = (width-upper.width)/2;
   int textBoxHeight = (fontSize+spaceBetweenLines)*numLines+20; // constant of 10 acts as a buffer between bottom screenshot and text
-  int upperY = (height-textBoxHeight-upper.height-lower.height)/3; // text stays in the top portion of the screen, as the bottom portion contains the onscreen GUI with dynamic buttons
+  int upperY = (height-textBoxHeight-upper.height-lower.height)/2;
   
+  // draws top and bottom google classroom screenshots to screen
   stroke(220);
   fill(255);
   rect(imgX+1, upperY+upper.height-0.5, upper.width-4, textBoxHeight);
   image(upper, imgX, upperY);
   image(lower, imgX-1, upperY+upper.height+textBoxHeight-0.5); // constant of 0.5 allows the top border of the rectangle's outline sneak under the top screenshot :)
     
+  // draws sentence to google classroom screenshot
   fill(0);
   text(join(sentence, " "), imgX+20, upperY+upper.height+6, upper.width-45, textBoxHeight);
   

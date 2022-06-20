@@ -22,14 +22,12 @@ public void schattmanSelected(GButton source, GEvent event) { //_CODE_:schattman
   println("schattmanButton - GButton >> GEvent." + event + " @ " + millis());
   currTeacher = schattman;
   reset();
-  schattman.spewGibberish(); // comment this out later; for testing only
 } //_CODE_:schattmanButton:230753:
 
 public void bruzzeseSelected(GButton source, GEvent event) { //_CODE_:bruzzeseButton:915250:
   println("bruzzese - GButton >> GEvent." + event + " @ " + millis());
   currTeacher = bruzzese;
   reset();
-  bruzzese.spewGibberish(); // comment later
 } //_CODE_:bruzzeseButton:915250:
 
 public void araujoSelected(GButton source, GEvent event) { //_CODE_:araujoButton:364774:
@@ -46,7 +44,49 @@ public void scullionSelected(GButton source, GEvent event) { //_CODE_:scullionBu
 
 public void autogenerate(GButton source, GEvent event) { //_CODE_:autogenerateButton:613485:
   println("autogenerateButton - GButton >> GEvent." + event + " @ " + millis());
+  reset();
+  currTeacher.spewGibberish();
 } //_CODE_:autogenerateButton:613485:
+
+public void button1_click3(GButton source, GEvent event) { //_CODE_:saveButton:269599:
+  println("saveButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:saveButton:269599:
+
+public void clearButtonSelected(GButton source, GEvent event) { //_CODE_:clearButton:600100:
+  println("clearButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:clearButton:600100:
+
+synchronized public void wordSelectDraw(PApplet appc, GWinData data) { //_CODE_:wordSelect:806454:
+  appc.background(230);
+} //_CODE_:wordSelect:806454:
+
+public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:305287:
+  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:button1:305287:
+
+public void button2_click1(GButton source, GEvent event) { //_CODE_:button2:525374:
+  println("button2 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:button2:525374:
+
+public void button3_click1(GButton source, GEvent event) { //_CODE_:button3:764334:
+  println("button3 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:button3:764334:
+
+public void periodButtonSelected(GButton source, GEvent event) { //_CODE_:periodButton:274960:
+  println("periodButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:periodButton:274960:
+
+public void commaButtonSelected(GButton source, GEvent event) { //_CODE_:commaButton:334619:
+  println("commaButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:commaButton:334619:
+
+public void exclamationButtonClicked(GButton source, GEvent event) { //_CODE_:exclamationButton:512422:
+  println("exclamationButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:exclamationButton:512422:
+
+public void timer1_Action1(GTimer source) { //_CODE_:timer1:821815:
+  println("timer1 - GTimer >> an event occured @ " + millis());
+} //_CODE_:timer1:821815:
 
 
 
@@ -57,7 +97,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  teacherSelect = GWindow.getWindow(this, "Teacher Select Screen", 0, 0, 240, 180, JAVA2D);
+  teacherSelect = GWindow.getWindow(this, "Teacher Selection", 0, 0, 390, 180, JAVA2D);
   teacherSelect.noLoop();
   teacherSelect.setActionOnClose(G4P.KEEP_OPEN);
   teacherSelect.addDrawHandler(this, "teacherSelectDraw");
@@ -77,18 +117,61 @@ public void createGUI(){
   scullionButton.setText("Scullion (FR)");
   scullionButton.setLocalColorScheme(GCScheme.CYAN_SCHEME);
   scullionButton.addEventHandler(this, "scullionSelected");
-  label1 = new GLabel(teacherSelect, 47, 50, 150, 20);
+  label1 = new GLabel(teacherSelect, 44, 49, 150, 20);
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label1.setText("CHOOSE YOUR VICTIM");
   label1.setLocalColorScheme(GCScheme.CYAN_SCHEME);
   label1.setOpaque(false);
   togGroup1 = new GToggleGroup();
   togGroup2 = new GToggleGroup();
-  autogenerateButton = new GButton(teacherSelect, 56, 120, 128, 40);
+  autogenerateButton = new GButton(teacherSelect, 124, 120, 128, 40);
   autogenerateButton.setText("Generate something for me!");
   autogenerateButton.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
   autogenerateButton.addEventHandler(this, "autogenerate");
+  saveButton = new GButton(teacherSelect, 20, 130, 20, 20);
+  saveButton.setText("s");
+  saveButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  saveButton.addEventHandler(this, "button1_click3");
+  clearButton = new GButton(teacherSelect, 350, 140, 50, 10);
+  clearButton.setText("t");
+  clearButton.setLocalColorScheme(GCScheme.RED_SCHEME);
+  clearButton.addEventHandler(this, "clearButtonSelected");
+  wordSelect = GWindow.getWindow(this, "Word Selection", 0, 0, 390, 120, JAVA2D);
+  wordSelect.noLoop();
+  wordSelect.setActionOnClose(G4P.KEEP_OPEN);
+  wordSelect.addDrawHandler(this, "wordSelectDraw");
+  button1 = new GButton(wordSelect, 20, 20, 110, 40);
+  button1.setText("Face text");
+  button1.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  button1.addEventHandler(this, "button1_click1");
+  button2 = new GButton(wordSelect, 140, 20, 110, 40);
+  button2.setText("Face text");
+  button2.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  button2.addEventHandler(this, "button2_click1");
+  button3 = new GButton(wordSelect, 260, 20, 110, 40);
+  button3.setText("Face text");
+  button3.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  button3.addEventHandler(this, "button3_click1");
+  periodButton = new GButton(wordSelect, 100, 70, 20, 20);
+  periodButton.setText(".");
+  periodButton.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  periodButton.addEventHandler(this, "periodButtonSelected");
+  commaButton = new GButton(wordSelect, 130, 70, 20, 20);
+  commaButton.setText(",");
+  commaButton.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  commaButton.addEventHandler(this, "commaButtonSelected");
+  exclamationButton = new GButton(wordSelect, 160, 70, 20, 20);
+  exclamationButton.setText("!");
+  exclamationButton.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  exclamationButton.addEventHandler(this, "exclamationButtonClicked");
+  punctuationText = new GLabel(wordSelect, 20, 70, 80, 20);
+  punctuationText.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  punctuationText.setText("Punctuation:");
+  punctuationText.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  punctuationText.setOpaque(false);
+  timer1 = new GTimer(this, this, "timer1_Action1", 1000);
   teacherSelect.loop();
+  wordSelect.loop();
 }
 
 // Variable declarations 
@@ -102,3 +185,14 @@ GLabel label1;
 GToggleGroup togGroup1; 
 GToggleGroup togGroup2; 
 GButton autogenerateButton; 
+GButton saveButton; 
+GButton clearButton; 
+GWindow wordSelect;
+GButton button1; 
+GButton button2; 
+GButton button3; 
+GButton periodButton; 
+GButton commaButton; 
+GButton exclamationButton; 
+GLabel punctuationText; 
+GTimer timer1; 
