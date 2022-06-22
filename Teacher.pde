@@ -43,13 +43,19 @@ class Teacher {
       
       // Remove punctuation at the end of a word
       for (int j=0; j < punctuation.length; j++)
+      try {
         if (w.substring(w.length()-1).equals(punctuation[j]))
           w = w.substring(0, w.length()-1);
+      }
+      catch (Exception e) {}
         
       // Remove punctuation at the beginning of a word
+      try {
       for (int j=0; j < punctuation.length; j++)
         if (str(w.charAt(0)).equals(punctuation[j]))
           w = w.substring(1);
+      }
+      catch (Exception e) {}
           
       finalTranscript = append(finalTranscript, w);
     }

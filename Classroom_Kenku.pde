@@ -47,12 +47,12 @@ void setup() {
   
   // TO RUN THE PROGRAM WITHOUT GUI, TRY CHANGING THESE VARIABLES!
   currTeacher = schattman; // Options: araujo, bruzzese, schattman, scullion
-  sentenceLength = "medium"; // Options: "short", "medium", "long", "soliloquy"
+  sentenceLength = "short"; // Options: "short", "medium", "long", "soliloquy"
   
-  //araujo.buildVocabMap();
+  araujo.buildVocabMap();
   bruzzese.buildVocabMap();
   schattman.buildVocabMap();
-  //scullion.buildVocabMap();
+  scullion.buildVocabMap();
   
   //currTeacher.printVocabMap();
   currTeacher.spewGibberish(); // Deeply, deeply out of character.
